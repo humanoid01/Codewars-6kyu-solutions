@@ -45,3 +45,22 @@ function bitsWar(numbers) {
 
   return odd > even ? 'odds win' : odd < even ? 'evens win' : 'tie'
 }
+//-------------------------------------------------------------------------//
+function bitsWar(numbers) {
+  let evenVsOdd = [0, 0]
+  const points = (n) => n.toString(2).split('0').join('').length
+
+  for (const currEl of numbers) {
+    if (currEl < 0) {
+      evenVsOdd[-currEl % 2] -= points(currEl) - 1
+    } else {
+      evenVsOdd[currEl % 2] += points(currEl)
+    }
+  }
+
+  return evenVsOdd[0] > evenVsOdd[1]
+    ? 'evens win'
+    : evenVsOdd[0] < evenVsOdd[1]
+    ? 'odds win'
+    : 'tie'
+}
