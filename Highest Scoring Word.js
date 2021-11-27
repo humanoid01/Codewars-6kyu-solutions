@@ -25,7 +25,7 @@ const high = (s) => {
     valArr.push(getVal(currEl))
   }
 
-  let max = valArr.slice().sort((a, b) => b - a)
+  let max = [...valArr].sort((a, b) => b - a)
 
   return arr[valArr.indexOf(max[0])]
 }
